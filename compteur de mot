@@ -1,0 +1,68 @@
+///le html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTS</title>
+</head>
+<body>
+      <h1>COMPTEUR DE MOTS</h1>
+      <textarea id="mots"></textarea>
+      <p>Nombres de mots: <span id="Nbres">0</span></p>
+      <p>Nombres de caractères: <span id="Nbrecar">0</span></p>
+      <script src="code.js"></script>
+</body>
+</html>
+
+//le css
+body{
+    padding: 0;
+    margin: 0;
+}
+
+textarea{
+    width: 600px;
+    height: 300px;
+    background-color: antiquewhite;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    /* border: 1px solid black; */
+}
+p{
+    text-align: center;
+}
+
+//le js
+
+let mots=document.querySelector("#mots");
+let nbresMots=document.querySelector("#Nbres");
+let nbresCaracteres=document.querySelector("#Nbrecar");
+
+mots.value=" ";
+mots.addEventListener("keyup",function(a){
+   if(mots.value!=' '){
+    nbresMots.textContent=nombesMots(mots.value);
+    nbresCaracteres.textContent=nombresCaracteres(mots.value);
+   }else{
+    nbresMots.text=0;
+   }
+    
+})
+
+const nombesMots = (text)=>{
+    return text.replace(/[!..,]/g,' ').trim().split(" ").length;
+}
+
+const nombresCaracteres = (text)=>{
+    return text.trim().length;
+}
